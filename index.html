@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pré-Audit SEO - Adopt Parfums</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffe7ec 0%, #ffcfd9 100%);
+            overflow-x: hidden;
+        }
+
+        .sparkle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #ec3f82 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkle 2s infinite;
+            opacity: 0;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(236, 63, 130, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(236, 63, 130, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .logo-container {
+    max-width: 260px;        /* largeur raisonnable pour un logo */
+    margin: 0 auto 25px;     /* centrage + espacement */
+}
+
+.logo-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;     /* empêche toute déformation */
+}
+
+
+        h1 {
+            color: #ec3f82;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(236, 63, 130, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .slide:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(236, 63, 130, 0.25);
+        }
+
+        .slide-title {
+            color: #ec3f82;
+            font-size: 2em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #ffcfd9;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .icon {
+            font-size: 1.2em;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #ffe7ec 0%, #ffcfd9 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #ec3f82;
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #ec3f82;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .story-block {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 4px solid #ec3f82;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .recommendation-box {
+            background: linear-gradient(135deg, #ec3f82 0%, #ff6ba9 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 5px 20px rgba(236, 63, 130, 0.3);
+        }
+
+        .recommendation-box h3 {
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .recommendation-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .recommendation-box li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .recommendation-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .priority-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(236, 63, 130, 0.15);
+        }
+
+        .priority-table th {
+            background: linear-gradient(135deg, #ec3f82 0%, #ff6ba9 100%);
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-size: 1.1em;
+        }
+
+        .priority-table td {
+            padding: 20px;
+            border-bottom: 1px solid #ffcfd9;
+        }
+
+        .priority-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .priority-badge {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .priority-critical {
+            background: #ff4444;
+            color: white;
+        }
+
+        .priority-urgent {
+            background: #ff9800;
+            color: white;
+        }
+
+        .priority-high {
+            background: #ffeb3b;
+            color: #333;
+        }
+
+        .priority-medium {
+            background: #4caf50;
+            color: white;
+        }
+
+        .chart-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 15px;
+        }
+
+        .progress-bar {
+            background: #e0e0e0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ec3f82 0%, #ff6ba9 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            transition: width 1s ease;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .slide-title {
+                font-size: 1.5em;
+            }
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffcfd9 0%, #ffe7ec 100%);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #ec3f82;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #4caf50;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+
+                    <div class="logo-container">
+            <img src="image/logo-adopt.png" alt="Logo Adopt Parfums">
+        </div>
+
+            <h1>Pré-Audit SEO & Digital</h1>
+            <p class="subtitle">Analyse Stratégique & Plan d'Action 2026</p>
+            <p class="subtitle">Wedson Momperousse</p>
+        </div>
+
+        <!-- Slide 1: Situation Actuelle -->
+        <div class="slide">
+            <h2 class="slide-title"><span class="icon">🎯</span> La Force de la Marque Adopt</h2>
+            
+            <div class="story-block">
+                <p>Imaginez une marque de parfums qui rayonne sur internet. Chaque jour, des milliers de personnes tapent "Adopt Parfums" dans leur moteur de recherche. Cette notoriété exceptionnelle se traduit par des chiffres impressionnants.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="stat-box">
+                    <div class="stat-number">82,6%</div>
+                    <div class="stat-label">du trafic organique provient de recherches directes de la marque</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">68%</div>
+                    <div class="stat-label">du trafic total arrive en accès direct</div>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <strong>✨ Ce que cela signifie :</strong> Adopt Parfums bénéficie d'une excellente mémorisation de marque et d'une clientèle ultra-fidèle. C'est une base solide remarquable.
+            </div>
+
+            <div class="story-block">
+                <p>Mais voici le paradoxe : cette force cache une faiblesse stratégique. Comme un restaurant étoilé qui ne servirait que ses habitués, Adopt excelle auprès de sa clientèle existante, mais peine à conquérir de nouveaux clients.</p>
+            </div>
+
+            <div class="recommendation-box">
+                <h3>💡 L'Opportunité Cachée</h3>
+                <ul>
+                    <li>Diversifier les sources d'acquisition pour toucher de nouveaux clients</li>
+                    <li>Transformer la notoriété existante en levier de croissance</li>
+                    <li>Équilibrer trafic de marque et trafic générique</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 2: Le Vide des Réseaux Sociaux -->
+        <div class="slide">
+            <h2 class="slide-title"><span class="icon">📱</span> Le Mystère du Trafic Social à 0%</h2>
+            
+            <div class="story-block">
+                <p>En analysant les sources de trafic, un chiffre saute aux yeux : <span class="highlight">0% de trafic social payant</span>. C'est comme si Adopt Parfums avait une vitrine magnifique, mais refusait d'allumer la lumière le soir.</p>
+            </div>
+
+            <div class="chart-container">
+                <h4>Répartition Actuelle du Trafic</h4>
+                <div style="margin: 20px 0;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span>Direct</span>
+                        <span>68%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 68%;">68%</div>
+                    </div>
+                </div>
+                <div style="margin: 20px 0;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span>Organique</span>
+                        <span>20%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 20%;">20%</div>
+                    </div>
+                </div>
+                <div style="margin: 20px 0;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span>Paid Search</span>
+                        <span>2%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 2%;">2%</div>
+                    </div>
+                </div>
+                <div style="margin: 20px 0;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span>Social Payant</span>
+                        <span style="color: #ff4444;">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%; background: #ff4444;">0%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="story-block">
+                <p>Pourtant, l'analyse révèle que TikTok génère l'engagement le plus qualitatif avec un ratio commentaires/likes exceptionnel. Sur Instagram, un post a atteint 168 517 likes. Le potentiel est colossal, mais inexploité pour l'acquisition.</p>
+            </div>
+
+            <div class="recommendation-box">
+                <h3>🚀 La Stratégie Social Media</h3>
+                <ul>
+                    <li>Prioriser TikTok pour l'acquisition de nouveaux clients jeunes</li>
+                    <li>Déployer des campagnes Paid Social ciblées (Lookalikes, Intérêt Parfum/Beauté)</li>
+                    <li>Amplifier les contenus organiques les plus engageants via Spark Ads</li>
+                    <li>Utiliser Facebook/Instagram pour du retargeting sur audiences chaudes</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 3: Le Drame Technique -->
+        <div class="slide">
+            <h2 class="slide-title"><span class="icon">🚨</span> L'Erreur Technique Invisible qui Coûte Cher</h2>
+            
+            <div class="story-block">
+                <p>Sous la surface, un problème technique majeur sabote silencieusement les performances du site. Imaginez un bâtiment magnifique dont les fondations seraient fissurées : c'est exactement ce qui se passe.</p>
+            </div>
+
+            <div class="stat-box" style="background: #fff3cd; border-left-color: #ff4444;">
+                <div class="stat-number" style="color: #ff4444;">265</div>
+                <div class="stat-label" style="color: #333;">pages affectées par un code parasite dans le &lt;head&gt;</div>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Le problème :</strong> Une balise &lt;div&gt; mal placée force Google à fermer prématurément le &lt;head&gt;, rendant invisibles toutes les balises essentielles qui suivent : canonical, hreflang, pixels de tracking...
+            </div>
+
+            <div class="story-block">
+                <p>Les conséquences sont dévastatrices et touchent le cœur du business :</p>
+                <ul style="margin-left: 20px; margin-top: 15px; line-height: 2;">
+                    <li><strong>81+ pages catégories</strong> : Perdent leur visibilité sur les mots-clés génériques</li>
+                    <li><strong>Majorité des fiches produits</strong> : Vitesse de chargement dégradée (LCP impacté)</li>
+                    <li><strong>Pages campagnes</strong> : Black Friday, Soldes mal indexées</li>
+                    <li><strong>SEO International</strong> : 262 pages avec hreflang hors du &lt;head&gt; = ciblage géographique brisé</li>
+                </ul>
+            </div>
+
+            <div class="stat-box" style="background: #ffe7ec; border-left-color: #ec3f82;">
+                <div class="stat-number" style="color: #ec3f82;">499/500</div>
+                <div class="stat-label">pages auditées présentent cette erreur systémique</div>
+            </div>
+
+            <div class="recommendation-box">
+                <h3>🔧 Action Critique Immédiate</h3>
+                <ul>
+                    <li>Corriger le template Magento (header.phtml) en déplaçant la balise &lt;div&gt; Nosto dans le &lt;body&gt;</li>
+                    <li>Repositionner toutes les balises hreflang à l'intérieur du &lt;head&gt;</li>
+                    <li>Vérifier l'intégrité des balises canonical et pixels de tracking</li>
+                    <li>Tester et déployer en urgence avant tout investissement Paid Media</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 4: SEO Local -->
+        <div class="slide">
+            <h2 class="slide-title"><span class="icon">📍</span> Le Potentiel Inexploité du SEO Local</h2>
+            
+            <div class="story-block">
+                <p>Quand un client clique sur "Site Web" depuis la fiche Google du magasin de Bordeaux, où atterrit-il ? Sur la page d'accueil générique. C'est comme si on lui disait : "Trouvez votre chemin vous-même".</p>
+            </div>
+
+            <div class="warning-box">
+                <strong>🎯 Erreur stratégique détectée :</strong> Les fiches Google Business Profile redirigent vers la page d'accueil au lieu de la page spécifique du magasin dans le Store Locator.
+            </div>
+
+            <div class="story-block">
+                <p>Pourtant, l'analyse des avis clients révèle une richesse incroyable :</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="stat-box">
+                    <div class="stat-number" style="font-size: 2em;">104</div>
+                    <div class="stat-label">mentions du mot "boutique"</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" style="font-size: 2em;">86</div>
+                    <div class="stat-label">mentions des "vendeuses"</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" style="font-size: 2em;">44</div>
+                    <div class="stat-label">mentions du "prix"</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" style="font-size: 2em;">16</div>
+                    <div class="stat-label">mentions "souriant"</div>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <strong>💎 L'atout majeur :</strong> Le capital humain et l'expérience en boutique sont les véritables forces d'Adopt Parfums. Ces témoignages doivent nourrir la stratégie Paid Social.
+            </div>
+
+            <div class="recommendation-box">
+                <h3>🗺️ Optimisation SEO Local</h3>
+                <ul>
+                    <li>Rediriger les fiches GBP vers les pages Store Locator spécifiques</li>
+                    <li>Standardiser la catégorie primaire à "Parfumerie" sur toutes les fiches</li>
+                    <li>Structurer les pages avec H2 dédiés : Coordonnées, Services, Accès, Avis</li>
+                    <li>Exploiter les termes "vendeuses" et "souriant" dans les campagnes Paid Social</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 5: Le Blog -->
+        <div class="slide">
+            <h2 class="slide-title"><span class="icon">📝</span> Le Mag : Un Levier Puissant mais Brisé</h2>
+            
+            <div class="story-block">
+                <p>Le blog "Le Mag" devrait être une machine d'acquisition de trafic informationnel. Malheureusement, des problèmes techniques et éditoriaux sabotent son potentiel.</p>
+            </div>
+
+            <div class="stat-box" style="background: #fff3cd; border-left-color: #ff9800;">
+                <div class="stat-number" style="color: #ff9800;">7,8s</div>
+                <div class="stat-label">Largest Contentful Paint sur mobile (objectif : &lt; 2,5s)</div>
+            </div>
+
+            <div class="warning-box">
+                <strong>📱 Performance mobile catastrophique :</strong> Avec un LCP de 7,8 secondes, la majorité des visiteurs mobiles abandonnent avant même de voir le contenu. Chaque seconde au-delà de 2,5s coûte des conversions.
+            </div>
+
+            <div class="story-block">
+                <p>Autres problèmes détectés :</p>
+                <ul style="margin-left: 20px; margin-top: 15px; line-height: 2;">
+                    <li>Absence de balises alt sur les images (perte de trafic Google Images)</li>
+                    <li>82 liens internes répétitifs par article (dilution du PageRank)</li>
+                    <li>Contenu mal structuré pour la conversion (pas de liste de produits en tête)</li>
+                    <li>333 KiB de JavaScript inutilisé</li>
+                </ul>
+            </div>
+
+            <div class="recommendation-box">
+                <h3>⚡ Optimisation du Blog</h3>
+                <ul>
+                    <li>Réduire le LCP à &lt; 4s puis &lt; 2,5s (compression images, lazy loading, optimisation JS)</li>
+                    <li>Ajouter systématiquement les balises alt sur toutes les images</li>
+                    <li>Réduire le maillage interne répétitif et rediriger vers pages de conversion</li>
+                    <li>Structurer les tutoriels : TOC cliquable, durée estimée, liste produits en tête</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 6: Backlinks -->
+        <div class="slide">
+            <h2 class="slide-title"><span class="icon">🔗</span> Le Profil de Backlinks à Risque</h2>
+            
+            <div class="story-block">
+                <p>Les backlinks sont comme des recommandations : leur qualité compte plus que leur quantité. Et sur ce point, Adopt Parfums a un problème sérieux.</p>
+            </div>
+
+            <div class="stat-box" style="background: #fff3cd; border-left-color: #ff4444;">
+                <div class="stat-number" style="color: #ff4444;">73%</div>
+                <div class="stat-label">des domaines référents ont un Authority Score de 0-10 (très faible qualité)</div>
+            </div>
+
+            <div class="grid-2">
+                <div class="stat-box">
+                    <div class="stat-number" style="font-size: 2em; color: #ff9800;">-16%</div>
+                    <div class="stat-label">de backlinks perdus récemment</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" style="font-size: 2em; color: #ff9800;">-3%</div>
+                    <div class="stat-label">de domaines référents en déclin</div>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Risque de pénalité :</strong> Le déclin récent suggère un nettoyage de liens toxiques ou de nombreux liens inactifs. Sans audit approfondi, le profil risque une pénalité Google.
+            </div>
+
+            <div class="success-box">
+                <strong>✅ Points positifs :</strong> Les liens proviennent majoritairement de secteurs pertinents (Retail 7%, Beauty & Cosmetics 5%). La stratégie de link building est thématiquement cohérente.
+            </div>
+
+            <div class="recommendation-box">
+                <h3>🛡️ Assainissement du Profil</h3>
+                <ul>
+                    <li>Mener un audit complet et désavouer les liens toxiques (AS 0-10)</li>
+                    <li>Cibler uniquement des domaines avec AS > 40 pour les nouvelles acquisitions</li>
+                    <li>Transformer les relations Mass Media (2% actuellement) en partenariats solides</li>
+                    <li>Monitorer mensuellement l'évolution du profil</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 7: robots.txt -->
+        <div class="slide">
+            <h2 class="slide-title"><span class="icon">🤖</span> Configuration robots.txt Risquée</h2>
+            
+            <div class="story-block">
+                <p>Le fichier robots.txt agit comme un videur à l'entrée d'une boîte de nuit : il décide qui peut entrer. Actuellement, il est trop strict et risque de bloquer des visiteurs importants.</p>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Règles trop agressives :</strong> Les directives <code>Disallow: ?*</code> et <code>Disallow: *?*</code> bloquent toutes les URLs avec un point d'interrogation, ce qui peut masquer des pages importantes (campagnes, A/B testing, filtres).
+            </div>
+
+            <div class="story-block">
+                <p>Cette méthode de gestion du crawl budget est dépassée et moins efficace que la gestion via Google Search Console.</p>
+            </div>
+
+            <div class="recommendation-box">
+                <h3>🔧 Modernisation du robots.txt</h3>
+                <ul>
+                    <li>Supprimer les règles Disallow: *?* trop agressives</li>
+                    <li>Utiliser la gestion des paramètres d'URL dans Google Search Console</li>
+                    <li>Implémenter des balises rel="canonical" pour indiquer les versions à indexer</li>
+                    <li>Vérifier que les pages essentielles sont bien indexées via leurs URLs propres</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 8: Pages Campagnes -->
+        <div class="slide">
+            <h2 class="slide-title"><span class="icon">🎄</span> Pages Campagnes Obsolètes</h2>
+            
+            <div class="story-block">
+                <p>La page /soldes.html affiche encore des informations sur le Black Friday avec des dates passées (20 novembre au 1er décembre 2025). C'est comme laisser les décorations de Noël jusqu'en mars.</p>
+            </div>
+
+            <div class="warning-box">
+                <strong>💔 Impact UX :</strong> Un visiteur arrivant sur cette page voit immédiatement une offre expirée, créant frustration et confusion. Le taux de rebond explose, la confiance s'effondre.
+            </div>
+
+            <div class="recommendation-box">
+                <h3>🎯 Gestion des Pages Saisonnières</h3>
+                <ul>
+                    <li>Remplacer immédiatement les dates passées par un message tourné vers l'avenir</li>
+                    <li>Rediriger vers les promotions actuelles et idées cadeaux</li>
+                    <li>Éviter les URLs avec l'année (utiliser des URLs permanentes)</li>
+                    <li>Mettre en place un calendrier de mise à jour des pages campagnes</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 9: SEO International -->
+        <div class="slide">
+            <h2 class="slide-title"><span class="icon">🌍</span> SEO International Compromis</h2>
+            
+            <div class="story-block">
+                <p>Adopt Parfums vise plusieurs pays avec des sites en français, anglais, espagnol... Mais l'effort international est neutralisé par l'erreur technique hreflang.</p>
+            </div>
+
+            <div class="stat-box" style="background: #fff3cd; border-left-color: #ff4444;">
+                <div class="stat-number" style="color: #ff4444;">498/500</div>
+                <div class="stat-label">pages du site anglais avec hreflang hors du &lt;head&gt; + code parasite</div>
+            </div>
+
+            <div class="story-block">
+                <p>Quand hreflang est positionné en dehors du &lt;head&gt;, Google l'ignore complètement. Résultat : un utilisateur espagnol peut tomber sur la version française, un anglais sur la version italienne...</p>
+            </div>
+
+            <div class="warning-box">
+                <strong>📉 Conséquences business :</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Perte massive de trafic international mal ciblé</li>
+                    <li>Taux de rebond explosif (mauvaise langue/pays)</li>
+                    <li>Confusion sur les prix et disponibilités produits</li>
+                    <li>Gaspillage des budgets de campagnes internationales</li>
+                </ul>
+            </div>
+
+            <div class="recommendation-box">
+                <h3>🌐 Correction SEO International</h3>
+                <ul>
+                    <li>Repositionner TOUTES les balises hreflang à l'intérieur du &lt;head&gt;</li>
+                    <li>Vérifier l'implémentation Hreflang en cohérence avec les Sitemaps</li>
+                    <li>Tester le ciblage géographique pour chaque version linguistique</li>
+                    <li>Monitorer les performances par pays dans Google Search Console</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 10: Données Structurées -->
+        <div class="slide">
+            <h2 class="slide-title"><span class="icon">⭐</span> Opportunités Manquées : Rich Snippets</h2>
+            
+            <div class="story-block">
+                <p>Les Rich Snippets (résultats enrichis) permettent d'occuper plus d'espace dans Google, attirant plus de clics. La page du programme de fidélité contient une FAQ, mais elle n'est pas reconnue par Google.</p>
+            </div>
+
+            <div class="warning-box">
+                <strong>🔍 Problème détecté :</strong> Le marquage Schema.org/FAQPage est incorrect ou incomplet, ou bloqué par l'erreur du code parasite dans le &lt;head&gt;.
+            </div>
+
+            <div class="story-block">
+                <p>Une FAQ bien balisée pourrait augmenter significativement le CTR en affichant directement les questions-réponses dans les résultats Google.</p>
+            </div>
+
+            <div class="recommendation-box">
+                <h3>✨ Implémenter les Données Structurées</h3>
+                <ul>
+                    <li>Corriger d'abord le code parasite dans le &lt;head&gt; (priorité critique)</li>
+                    <li>Vérifier et corriger le Schema.org/FAQPage sur la page fidélité</li>
+                    <li>Assurer au moins 2 paires Question/Answer complètes</li>
+                    <li>Étendre les données structurées aux fiches produits (Product, Review, AggregateRating)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 11: IA et Recherche Générative -->
+        <div class="slide">
+            <h2 class="slide-title"><span class="icon">🤖</span> Préparé pour l'Avenir : IA et SGE</h2>
+            
+            <div class="story-block">
+                <p>Bonne nouvelle dans ce pré-audit : Adopt Parfums est déjà bien positionné pour la révolution de la recherche par IA.</p>
+            </div>
+
+            <div class="success-box">
+                <strong>✅ Force IA détectée :</strong> Le site est fréquemment mentionné (530 mentions) et cité (677 pages) par ChatGPT comme source fiable. La Visibilité IA est excellente (61/100).
+            </div>
+
+            <div class="story-block">
+                <p>Cela signifie que le contenu est perçu comme fiable et de haute qualité par les modèles de langage. Adopt est bien préparé pour la Search Generative Experience (SGE) de Google.</p>
+            </div>
+
+            <div class="recommendation-box">
+                <h3>🚀 Maximiser la Visibilité IA</h3>
+                <ul>
+                    <li>Structurer le contenu informationnel (blog, FAQ) de manière concise</li>
+                    <li>Utiliser des formats propices à l'IA : tableaux, listes, définitions</li>
+                    <li>Optimiser pour l'apparition dans les AI Overviews de Google et Gemini</li>
+                    <li>Maintenir la qualité éditoriale qui a permis cette reconnaissance</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tableau de Priorités -->
+        <div class="slide">
+            <h2 class="slide-title"><span class="icon">📋</span> Plan d'Action Priorisé</h2>
+            
+            <table class="priority-table">
+                <thead>
+                    <tr>
+                        <th>Priorité</th>
+                        <th>Problème</th>
+                        <th>Impact Business</th>
+                        <th>Délai Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="priority-badge priority-critical">P0 - CRITIQUE</span></td>
+                        <td><strong>Erreur technique &lt;head&gt;</strong><br>265 pages avec code parasite + 262 pages hreflang mal positionné</td>
+                        <td>Bloque SEO international, dégrade performances, empêche pixels tracking. <strong>Impact transversal maximal.</strong></td>
+                        <td>Immédiat<br>(J+0 à J+3)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="priority-badge priority-critical">P1 - CRITIQUE</span></td>
+                        <td><strong>Performance mobile Blog</strong><br>LCP 7,8s au lieu de &lt; 2,5s</td>
+                        <td>Taux d'abandon massif, perte de classement Google, ROI Paid Media compromis</td>
+                        <td>Urgent<br>(J+3 à J+7)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="priority-badge priority-urgent">P2 - URGENT</span></td>
+                        <td><strong>SEO Local</strong><br>Redirections GBP invalides + catégories incohérentes</td>
+                        <td>Perte de trafic en magasin physique, dilution autorité locale</td>
+                        <td>Urgent<br>(J+3 à J+7)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="priority-badge priority-urgent">P2 - URGENT</span></td>
+                        <td><strong>Profil Backlinks toxique</strong><br>73% de liens AS 0-10, déclin -16%</td>
+                        <td>Risque de pénalité Google, perte d'autorité domaine</td>
+                        <td>Urgent<br>(J+7 à J+14)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="priority-badge priority-high">P3 - HAUTE</span></td>
+                        <td><strong>Paid Social à 0%</strong><br>Aucune acquisition payante sur réseaux sociaux</td>
+                        <td>Opportunité de croissance majeure non exploitée, dépendance excessive au trafic de marque</td>
+                        <td>Planification<br>(J+14 à J+30)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="priority-badge priority-high">P3 - HAUTE</span></td>
+                        <td><strong>Configuration robots.txt</strong><br>Règles trop agressives Disallow: *?*</td>
+                        <td>Risque de bloquer crawl de pages importantes (campagnes, filtres)</td>
+                        <td>J+14 à J+21</td>
+                    </tr>
+                    <tr>
+                        <td><span class="priority-badge priority-high">P3 - HAUTE</span></td>
+                        <td><strong>Pages campagnes obsolètes</strong><br>Dates expirées, contenu vide</td>
+                        <td>Frustration client, taux de rebond élevé, perte de crédibilité</td>
+                        <td>Immédiat<br>(J+0)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="priority-badge priority-medium">P4 - MOYENNE</span></td>
+                        <td><strong>Accessibilité Blog</strong><br>Absence balises alt, maillage interne excessif (82 liens/article)</td>
+                        <td>Perte trafic Google Images, dilution PageRank, accessibilité réduite</td>
+                        <td>J+21 à J+45</td>
+                    </tr>
+                    <tr>
+                        <td><span class="priority-badge priority-medium">P4 - MOYENNE</span></td>
+                        <td><strong>Données structurées FAQ</strong><br>Schema.org/FAQPage non reconnu</td>
+                        <td>CTR réduit, opportunité Rich Snippet manquée</td>
+                        <td>J+30 à J+45</td>
+                    </tr>
+                    <tr>
+                        <td><span class="priority-badge priority-medium">P4 - MOYENNE</span></td>
+                        <td><strong>Optimisation CTR génériques</strong><br>Positions Top 3-5 avec faible trafic</td>
+                        <td>Potentiel de trafic non-marque sous-exploité</td>
+                        <td>J+30 à J+60</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="slide">
+            <h2 class="slide-title"><span class="icon">🎯</span> Vision Stratégique 2026</h2>
+            
+            <div class="story-block">
+                <p>Adopt Parfums se trouve à un carrefour stratégique. La marque possède des fondations exceptionnelles : une notoriété remarquable, une communauté engagée sur les réseaux sociaux, et un capital humain précieux en magasin.</p>
+            </div>
+
+            <div class="story-block">
+                <p>Mais pour transformer cette force en croissance durable, trois chantiers sont indispensables :</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="stat-box" style="background: linear-gradient(135deg, #ec3f82 0%, #ff6ba9 100%); color: white;">
+                    <div style="font-size: 1.5em; font-weight: bold; margin-bottom: 10px;">🔧 TECHNIQUE</div>
+                    <div style="font-size: 1em;">Corriger les erreurs critiques qui sabotent le SEO international et la performance</div>
+                </div>
+                <div class="stat-box" style="background: linear-gradient(135deg, #ec3f82 0%, #ff6ba9 100%); color: white;">
+                    <div style="font-size: 1.5em; font-weight: bold; margin-bottom: 10px;">📱 ACQUISITION</div>
+                    <div style="font-size: 1em;">Déployer une stratégie Paid Social ambitieuse pour conquérir de nouveaux clients</div>
+                </div>
+                <div class="stat-box" style="background: linear-gradient(135deg, #ec3f82 0%, #ff6ba9 100%); color: white;">
+                    <div style="font-size: 1.5em; font-weight: bold; margin-bottom: 10px;">🛡️ QUALITÉ</div>
+                    <div style="font-size: 1em;">Assainir le profil de backlinks pour sécuriser l'autorité du domaine</div>
+                </div>
+                <div class="stat-box" style="background: linear-gradient(135deg, #ec3f82 0%, #ff6ba9 100%); color: white;">
+                    <div style="font-size: 1.5em; font-weight: bold; margin-bottom: 10px;">📍 LOCAL</div>
+                    <div style="font-size: 1em;">Optimiser le SEO local pour transformer la force des magasins en trafic qualifié</div>
+                </div>
+            </div>
+
+            <div class="recommendation-box">
+                <h3>🚀 Les 3 Actions qui Changeront Tout</h3>
+                <ul>
+                    <li><strong>Semaine 1 :</strong> Correction technique urgente (template &lt;head&gt;, hreflang)</li>
+                    <li><strong>Semaines 2-4 :</strong> Lancement campagnes Paid Social TikTok + Audit backlinks</li>
+                    <li><strong>Mois 2-3 :</strong> Optimisation performance mobile + SEO local + Paid Search générique</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Créer des paillettes animées
+        function createSparkles() {
+            const sparkleCount = 30;
+            for (let i = 0; i < sparkleCount; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(sparkle);
+            }
+        }
+
+        createSparkles();
+
+        // Animation au scroll
+        const slides = document.querySelectorAll('.slide');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 0.6s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        slides.forEach(slide => observer.observe(slide));
+    </script>
+</body>
+</html>
